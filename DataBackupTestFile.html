@@ -1,0 +1,50 @@
+﻿<script src="https://hhhhteams.sharepoint.com/sites/HHHHTeams/Style%20Library/js/angular/Online/DataBackup/DataBackupTestFile.js?updated=06042020"></script>
+<script src="https://hhhhteams.sharepoint.com/sites/HHHHTeams/Style%20Library/js/angular/Services/alasql.min.js"></script>
+<script src="https://hhhhteams.sharepoint.com/sites/HHHHTeams/Style%20Library/js/angular/Services/xlsx.core.min.js"></script>
+<div ng-controller="DataBackupTestController" ng-cloak>
+	<div class="container">
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <div class="modal-body">
+                    <div class="divPanelBody">
+                        <div id="table-wrapper">
+                            <div id="table-scroll">
+                                <div class="col-sm-12 form-group">
+                                    <div class="col-sm-3" ng-repeat="site in ListsData">
+                                        <div><strong><label>{{site.Site}}</label></strong></div>
+                                        <div ng-repeat="list in site.Lists">
+                                            <div><img ng-src="{{baseUrl}}/SiteCollectionImages/ICONS/24/icon_check-green.jpg" alt="" style="margin:0px 2px;width:16px;height:15px;">{{list.Title}} ({{list.Items.length}})</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <div class="col-sm-5">
+                        <input class="form-control" style="width:100%" data-file="uploadFile" ng-model="uploadDocument" type="file" id="uploadDocument" valid-file>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary" ng-disabled="linkNewForm.$error.required || linkNewForm.$error.pattern" ng-click="CreateFolderAndSaveDoc()">Upload</button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary " ng-click="backupclick('Daily')" tyle="margin-top: 13px;">Daily Backup</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-primary pull-right" ng-click="backupclick('Monthly')" tyle="margin-top: 13px;">Monthly Backup</button>
+                    </div>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <div class="col-sm-5">
+                        <div ng-if="Successfullmessage">
+                            <span style="font-weight: bold;"> File Uploaded Sucessfully</span> <br>                            
+                        <a href="https://hhhhteams.sharepoint.com/sites/HHHHTeams/SP/Documents/Forms/AllItems.aspx?RootFolder=%2Fsites%2FHHHHTeams%2FSP%2FDocuments%2FDataBackup&FolderCTID=0x01200096815A51F8C65845A3F6C01822D938D5&View=%7BCE4C177A%2D94C7%2D4BFC%2D97FF%2D7AB5B0EA7DAA%7D" target="_blank">  Click here To See Uploaded file.. </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+	</div>
+</div>
+
